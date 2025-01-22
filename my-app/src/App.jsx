@@ -1,14 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(""); // Controlled input
+  const [dots, setDots] = useState([]); // State to store the dots array
+  const navigate = useNavigate(); // React Router navigation hook
 
-  const handleInputChange = (event) => {
-    setUsername(event.target.value); // Update username state as user types
-  };
-
-  // Helper function to generate a random color
   const getRandomColor = () => {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -18,47 +16,70 @@ function App() {
     return color;
   };
 
-  // Generate an array of dots with random properties
-  const dots = Array.from({ length: 50 }, (_, index) => ({
-    id: index,
-    left: `${Math.random() * 100}%`, // Random horizontal position
-    top: `${Math.random() * 100}%`, // Random vertical position
-    animationDelay: `${Math.random() * 5}s`, // Random animation delay
-    color: getRandomColor(), // Assign a random color
-  }));
+  // Generate dots on component mount
+  useEffect(() => {
+    const generateDots = () =>
+      Array.from({ length: 50 }, (_, index) => ({
+        id: index,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 5}s`,
+        color: getRandomColor(),
+        width: `${Math.random() * 200}px`,
+        height: `${Math.random() * 200}px`,
+      }));
+
+    setDots(generateDots());
+  }, []);
+
+  const handleInputChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handleEnterUsername = (event) => {
+    if (event.key === "Enter") {
+      if (username.trim()) {
+        navigate("/palette");
+      } else {
+        alert("Please enter a username.");
+      }
+    }
+  };
 
   return (
-    <>
-      <div className="app">
-        <div className="background">
-          {dots.map((dot) => (
-            <div
-              key={dot.id}
-              className="dot"
-              style={{
-                left: dot.left,
-                top: dot.top,
-                animationDelay: dot.animationDelay,
-                backgroundColor: dot.color, // Apply the random color
-                boxShadow: `0 0 10px 3px ${dot.color}`, // Glow effect matches the color
-              }}
-            ></div>
-          ))}
-        </div>
-        <h1>musicolor</h1>
+    <div className="app">
+      <div className="content">
+        <h1 className="title">musicolor</h1>
         <div className="card"></div>
-        <p className="read-the-docs">Type in Spotify username:</p>
         <div className="input-container">
           <input
+            className="input"
             type="text"
             placeholder="Enter Spotify username"
-            value={username} // Controlled input
-            onChange={handleInputChange} // Handle input change
+            value={username}
+            onChange={handleInputChange}
+            onKeyDown={handleEnterUsername}
           />
-          <p>Username: {username || "No username entered"}</p>
         </div>
       </div>
-    </>
+      <div className="background">
+        {dots.map((dot) => (
+          <div
+            key={dot.id}
+            className="dot"
+            style={{
+              left: dot.left,
+              top: dot.top,
+              width: dot.width,
+              height: dot.width,
+              animationDelay: dot.animationDelay,
+              backgroundColor: dot.color,
+              boxShadow: `0 0 10px 3px ${dot.color}`,
+            }}
+          ></div>
+        ))}
+      </div>
+    </div>
   );
 }
 

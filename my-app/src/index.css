@@ -16,18 +16,17 @@
 .dot {
   position: absolute;
   bottom: 0; /* Start at the bottom of the container */
-  width: 30px;
-  height: 30px;
-  background-color: limegreen;
-  opacity: 20%;
+  opacity: 35%;
   border-radius: 50%; /* Make it circular */
-  box-shadow: 0 0 10px 3px limegreen; /* Glow effect */
   animation: bounce 3s ease-in-out infinite;
+}
+
+.background {
+  z-index: -1;
 }
 
 .content {
   position: relative;
-  z-index: 1; /* Ensure content is above the background */
   text-align: center;
   color: white;
   padding: 20px;
@@ -59,13 +58,34 @@ body {
   min-height: 100vh;
   background-color: black;
   color: white;
+  overflow: hidden; 
+  box-sizing: border-box; 
+}
+
+.content {
+  position: relative;
+  z-index: 1;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 4.2em;
   line-height: 1.1;
   color: white;
 }
+
+.input {
+  background-color: white;
+  opacity: 35%;
+  height: 35px;
+  width: 200px;
+  text-align: center;
+}
+
+.input-container {
+  position: relative;
+  transform: translateY(-50px);
+}
+
 
 button {
   border-radius: 8px;

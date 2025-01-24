@@ -16,7 +16,7 @@
 .dot {
   position: absolute;
   bottom: 0; /* Start at the bottom of the container */
-  opacity: 35%;
+  opacity: 30%;
   border-radius: 50%; /* Make it circular */
   animation: bounce 3s ease-in-out infinite;
 }
@@ -30,7 +30,7 @@ rect {
   height: 100%;
   rx: 20px; 
   ry: 20px;
-  opacity: 30%;
+  opacity: 35%;
   stroke: white;
   stroke-width: 2px;
 }
@@ -79,25 +79,46 @@ body {
   z-index: 1;
 }
 
-h1 {
-  font-size: 4.2em;
+.title {
+  font-size: 5.2em;
+  font-family: "IBM Plex Mono";
+  font-weight: 400;
+  line-height: 1;
+  position: relative;
+  top: -65px;
+  color: white;
+}
+
+h2 {
+  font-size: 1.8em;
   font-family: "IBM Plex Mono";
   font-weight: 300;
   line-height: 1;
+  position: relative;
+  top: -50px;
   color: white;
 }
 
 .input {
+  height: 45px;
+  width: 450px;
   background-color: rgb(213, 223, 255);
-  opacity: 35%;
-  height: 35px;
-  width: 200px;
+  outline: 2px white;
+  opacity: 60%;
+  font-size: 1.8em;
+  font-weight: 300;
   text-align: center;
+  font-family: "IBM Plex Mono";
+  position: relative;
+}
+
+text {
+  color: white;
 }
 
 .input-container {
   position: relative;
-  transform: translateY(-50px);
+  transform: translateY(20px);
 }
 
 

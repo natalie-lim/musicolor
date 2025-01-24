@@ -4,9 +4,9 @@ import "./App.css";
 import { Helmet } from "react-helmet";
 
 function App() {
-  const [username, setUsername] = useState(""); // Controlled input
-  const [dots, setDots] = useState([]); // State to store the dots array
-  const navigate = useNavigate(); // React Router navigation hook
+  const [username, setUsername] = useState("");
+  const [dots, setDots] = useState([]);
+  const navigate = useNavigate();
 
   const getRandomColor = () => {
     const letters = "0123456789ABCDEF";
@@ -58,9 +58,9 @@ function App() {
       <div className="rectangle">
           <svg
             width="60vw"
-            height="80vh"
+            height="70vh"
             className="background-rectangle"
-            style={{ position: "absolute", top: "10vh", left: "38vh", zIndex: 0 }}
+            style={{ position: "absolute", top: "15vh", left: "38vh", zIndex: 0 }}
           >
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -74,12 +74,12 @@ function App() {
 
         <div className="content" style={{ position: "relative", zIndex: 1 }}>
           <h1 className="title">musicolor</h1>
-          <div className="card"></div>
+          <h2 className="description">generate a color palette based on <br></br> <br></br>your favorite spotify playlist</h2>
           <div className="input-container">
             <input
               className="input"
               type="text"
-              placeholder="Enter Spotify username"
+              placeholder="enter spotify username"
               value={username}
               onChange={handleInputChange}
               onKeyDown={handleEnterUsername}

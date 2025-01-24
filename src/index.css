@@ -1,11 +1,11 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "IBM Plex Mono", serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: white;
-  background-color: black;
+  background-color: rgb(191, 217, 251);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,11 +25,23 @@
   z-index: -1;
 }
 
+rect {
+  width: 100%;
+  height: 100%;
+  rx: 20px; 
+  ry: 20px;
+  opacity: 30%;
+  stroke: white;
+  stroke-width: 2px;
+}
+
+
 .content {
   position: relative;
   text-align: center;
   color: white;
   padding: 20px;
+  z-index: 1;
 }
 
 @keyframes bounce {
@@ -56,7 +68,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: black;
+  background-color: rgb(216, 229, 251);
   color: white;
   overflow: hidden; 
   box-sizing: border-box; 
@@ -69,13 +81,14 @@ body {
 
 h1 {
   font-size: 4.2em;
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: "IBM Plex Mono";
+  font-weight: 300;
   line-height: 1;
   color: white;
 }
 
 .input {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(213, 223, 255);
   opacity: 35%;
   height: 35px;
   width: 200px;
@@ -95,7 +108,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #96c3e8;
   color: white;
   cursor: pointer;
   transition: border-color 0.25s;
@@ -120,4 +133,88 @@ button:focus-visible {
     background-color: #1a1a1a;
     color: white;
   }
+}
+
+.ibm-plex-mono-thin {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.ibm-plex-mono-extralight {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.ibm-plex-mono-light {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ibm-plex-mono-regular {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ibm-plex-mono-medium {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.ibm-plex-mono-semibold {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.ibm-plex-mono-bold {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ibm-plex-mono-thin-italic {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.ibm-plex-mono-extralight-italic {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.ibm-plex-mono-light-italic {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ibm-plex-mono-regular-italic {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ibm-plex-mono-medium-italic {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ibm-plex-mono-semibold-italic {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.ibm-plex-mono-bold-italic {
+  font-family: "IBM Plex Mono", serif;
+  font-weight: 700;
+  font-style: italic;
 }

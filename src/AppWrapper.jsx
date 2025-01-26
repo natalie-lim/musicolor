@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import App from "./App";
-import PalettePage from "./PalettePage";
+import PalettePage from "./PickPlaylist";
 
 //
 function AppWrapper() {

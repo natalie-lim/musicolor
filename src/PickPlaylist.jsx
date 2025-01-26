@@ -1,10 +1,17 @@
 import React from 'react';
 import "./PickPlaylist.css";
 import { Helmet } from "react-helmet";
-import { useUser } from "./UserContext.jsx";
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+} from 'recoil';
+import { userIDState } from './atoms.js';
 
-function PickPlaylist() {
-  const { username } = useUser();
+
+function PalletePage() {
+  const { userID } = useRecoilState(userIDState);
   return (
     <>
       <Helmet>
@@ -33,9 +40,14 @@ function PickPlaylist() {
             </svg>
             <h1 className='title-2'>pick which <br></br>playlist</h1>
           </div>
+          <div>
+            <h2>
+              userID: {userID}
+            </h2>
+          </div>
       </div>
     </>
   );
 }
 
-export default PickPlaylist;
+export default PalletePage;

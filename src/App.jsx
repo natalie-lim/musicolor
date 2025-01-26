@@ -1,10 +1,18 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import { Helmet } from "react-helmet";
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
+import { userIDState } from './atoms.js';
 
 function App() {
-  const [username, setUsername] = useState("");
+  const [userID, setUserID] = useRecoilState(userIDState);
   const [dots, setDots] = useState([]);
   const navigate = useNavigate();
 
@@ -31,21 +39,22 @@ function App() {
   }, []);
 
   const handleInputChange = (event) => {
-    setUsername(event.target.value);
+    setUserID(event.target.value);
   };
 
-  const handleEnterUsername = (event) => {
+  const handleEnterUserID = (event) => {
     if (event.key === "Enter") {
-      if (username.trim()) {
+      if (userID.trim()) {
         navigate("/palette");
       } else {
-        alert("Please enter a username.");
+        alert("Please enter your userID (not username).");
       }
     }
   };
 
   return (
-    <>
+    <RecoilRoot>
+      
       <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
@@ -79,10 +88,10 @@ function App() {
             <input
               className="input"
               type="text"
-              placeholder="enter spotify username"
-              value={username}
+              placeholder="enter spotify userID"
+              value={userID}
               onChange={handleInputChange}
-              onKeyDown={handleEnterUsername}
+              onKeyDown={handleEnterUserID}
             />
           </div>
         </div>
@@ -104,7 +113,7 @@ function App() {
           ))}
         </div>
       </div>
-    </>
+      </RecoilRoot>
   );
 }
 

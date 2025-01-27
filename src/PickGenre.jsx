@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from "react";
 import "./PickGenre.css";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,6 @@ import {
   useRecoilState,
 } from 'recoil';
 import { genreState, userIDState } from './atoms.js';
-import axios from "axios";
 
 function PickPlaylist() {
   const [userID] = useRecoilState(userIDState);
@@ -81,7 +80,7 @@ function PickPlaylist() {
             ))}
           </div>
           <div className='column-buttons'>
-            {["pop", "rock", "hip-hop", "jazz"].map((genre, index) => (
+            {["pop", "rock", "hiphop", "jazz"].map((genre, index) => (
               <button
                 key={index}
                 className="genre-button"

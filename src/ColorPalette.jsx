@@ -1,54 +1,105 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { genreState } from './atoms';
 import { Helmet } from "react-helmet";
 import "./ColorPalette.css"
+import "./PickGenre.css";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 function ColorPalette() {
-  const genre = useRecoilValue(genreState); // Retrieve the selected genre from Recoil state
+    const genre = useRecoilValue(genreState); 
+    const navigate = useNavigate();
+    const [palette, setPalette] = useState([]); 
 
-  // Define a simple mapping of genres to color palettes
-  const genreColors = {
-    classical: ['#f5f5dc', '#a9a9a9', '#808080'],
-    country: ['#f4a460', '#deb887', '#d2b48c'],
-    indie: ['#ff7f50', '#ff6347', '#ff4500'],
-    edm: ['#40e0d0', '#48d1cc', '#00ced1'],
-    pop: ['#ff69b4', '#ff1493', '#db7093'],
-    rock: ['#696969', '#708090', '#2f4f4f'],
-    'hip-hop': ['#ffd700', '#daa520', '#b8860b'],
-    jazz: ['#8b4513', '#a0522d', '#cd853f'],
-  };
+    const seedColorList = {
+        classical: ['a7b0dd', 'C5AFA0', '94A187'], 
+        country: ['8B4513', 'A0522D', 'B22222'],
+        indie: ['3c6e71', '404E7C', '91A8A4'],
+        edm: ['ff00ff', 'D72483', 'F51AA4'],
+        pop: ['FC6DAB', 'F92A82', '01A7C2'],
+        rock: ['660000', '34252F', '023436'],
+        hiphop: ['FFD700', 'FF5733', 'FFC300'],
+        jazz: ['03012C', '634133', 'A4303F'],
+    };
+    
 
-  const colors = genreColors[genre] || ['#ffffff', '#cccccc', '#aaaaaa']; // Fallback colors
+    const getSeedColor = () => {
+        const seedArr = seedColorList[genre]
+        return seedArr[Math.floor(Math.random() * seedArr.length)];
+    }
 
-  return (
-    <>
-    <Helmet>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
-      <div style={{ textAlign: 'center', padding: '2rem' }}>
-        <h1>color palette for {genre}</h1>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
-            {colors.map((color, index) => (
-                <div
-                    key={index}
-                    style={{
-                        width: '100px',
-                        height: '100px',
-                        backgroundColor: color,
-                        borderRadius: '10px',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                    }}
-                ></div>
-            ))}
+    const getRandomScheme = () => {
+        const modes = ['monochrome', 'analogic', 'complement', 'triad', 'quad'];
+        return modes[Math.floor(Math.random() * modes.length)];
+    };
+
+
+    const getColorPalette = async () => {
+        try {
+            const mode = getRandomScheme(); // Randomly select a mode
+            const count = 5; // Randomly select the number of colors
+
+            const response = await axios.get(
+              `https://www.thecolorapi.com/scheme?hex=${getSeedColor()}&mode=${mode}&count=${count}`
+            );
+
+            const colors = response.data.colors.map((color) => color.hex.value);
+            setPalette(colors); // Update palette state with fetched colors
+        } catch (error) {
+            console.error("Error fetching color palette:", error);
+        }
+    };
+
+    useEffect(() => {
+        getColorPalette();
+    }, []); // Runs on first render and fetches a random palette
+
+    return (
+        <>
+        <Helmet>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+            <link
+              href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+              rel="stylesheet"
+            />
+        </Helmet>
+        <div style={{ textAlign: 'center', padding: '2rem' }}>
+            <h1>color palette for {genre}</h1>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
+                {palette.map((color, index) => (
+                    <div
+                        key={index}
+                        style={{
+                            width: '80px',
+                            height: '80px',
+                            backgroundColor: color,
+                            borderRadius: '50%',
+                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                            border: '1px solid #ddd',
+                        }}
+                        title={color}
+                    ></div>
+                ))}
+            </div>
+            <div className='column-buttons' style={{ marginTop: '2rem' }}>
+                <button
+                  className="genre-button"
+                  onClick={getColorPalette}
+                >
+                  regenerate
+                </button>
+                <button
+                  className="genre-button"
+                  onClick={() => navigate("/")}
+                >
+                  home
+                </button>
+            </div>
         </div>
-    </div></>
-  );
+        </>
+    );
 }
 
 export default ColorPalette;

@@ -12,7 +12,7 @@ function AppWrapper() {
       <Route path="/" element={<App />} />
       <Route path="/pickplaylist" element={<PickPlaylist />} />
       <Route path="/pickgenre" element={<PickGenreWrapper/>} />
-      <Route path="colorpalette" element={<ColorPalette/>} />
+      <Route path="/colorpalette" element={<ColorPalette/>} />
     </Routes>
   );
 }

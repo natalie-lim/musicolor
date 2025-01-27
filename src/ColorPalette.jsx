@@ -20,9 +20,9 @@ function ColorPalette() {
         indie: ['3c6e71', '404E7C', '91A8A4'],
         edm: ['ff00ff', 'D72483', 'F51AA4'],
         pop: ['FC6DAB', 'F92A82', '01A7C2'],
-        rock: ['660000', '34252F', '023436'],
+        rock: ['8e1600', '660198', '1F9DC4'],
         hiphop: ['FFD700', 'FF5733', 'FFC300'],
-        jazz: ['03012C', '634133', 'A4303F'],
+        jazz: ['1d3557', '6a040f', '9e2a2b'],
     };
     
     //this gets a random color from the palette that's been generated. I used this to make the dots

@@ -37,7 +37,7 @@ function PickPlaylist() {
             </defs>
             <rect width="100%" height="100%" fill="url(#gradient)" />
           </svg>
-          <h1 className='title-2'>Hi {userID},<br></br>pick which<br></br>genre</h1>
+          <h1 className='title-2'>Hi <br></br>{userID},<br></br>pick which<br></br>genre</h1>
         </div>
 
 {/*I know this is horrible style but unfortunately I couldn't figure out how to get this into two columns otherwise*/}

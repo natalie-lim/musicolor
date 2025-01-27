@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import "./PickGenre.css";
+import "./css/PickGenre.css";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import {
@@ -11,28 +10,6 @@ function PickPlaylist() {
   const [userID] = useRecoilState(userIDState);
   const [genre, setGenreState] = useRecoilState(genreState);
   const navigate = useNavigate();
-
-  //Wanted to do an API call but it didn't work out...
-  /*
-    useEffect (() => {
-      axios.post(
-        'https://accounts.spotify.com/api/token',
-        new URLSearchParams({
-          'grant_type': 'client_credentials',
-          'client_id': '95b9977cf0a04a23b8809a88d03f7467',
-          'client_secret': '8bf5e27b2e664326af64e65737ac498f'
-        })
-      ).then((r1) => {
-        let access_token = r1.data.access_token;
-        const response =  axios.get('https://api.spotify.com/v1/users/95b9977cf0a04a23b8809a88d03f7467/playlists', {
-          headers: {
-            'Authorization': 'Bearer  ' + access_token
-          }
-          }).then((response) => {
-            console.log(response);
-          });
-        })
-      }, ); */
 
   return (
     <>

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 import { genreState } from './atoms';
 import { Helmet } from "react-helmet";
-import "./ColorPalette.css";
+import "./css/ColorPalette.css";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -62,17 +62,18 @@ function ColorPalette() {
         if (!hasRun.current) {
             getColorPalette();
             hasRun.current = true;
+        } else {
+          const generateDots = () =>
+          Array.from({ length: 50 }, (_, index) => ({
+              id: index,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              color: getRandomColor(), 
+              diameter: `${Math.random() * 200}px`,
+          }));
+      setDots(generateDots());
         }
-        const generateDots = () =>
-            Array.from({ length: 50 }, (_, index) => ({
-                id: index,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                color: getRandomColor(), 
-                diameter: `${Math.random() * 200}px`,
-            }));
-        setDots(generateDots());
     }, [palette]);
 
     return (

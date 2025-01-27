@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./App.css";
+import "./css/App.css";
 import { Helmet } from "react-helmet";
 import {
   RecoilRoot,
-  atom,
-  selector,
   useRecoilState,
 } from 'recoil';
 import { userIDState } from './atoms.js';

@@ -82,7 +82,7 @@ function App() {
 
         <div className="content" style={{ position: "relative", zIndex: 1 }}>
           <h1 className="title">musicolor</h1>
-          <h2 className="description">generate a color palette based on <br></br> <br></br>your favorite music genre</h2>
+          <h2 className="description">generate a color palette based on <br></br> <br></br>your favorite music playlist</h2>
           <div className="input-container">
             <input
               className="input"

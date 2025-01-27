@@ -66,7 +66,7 @@ function App() {
             width="60vw"
             height="70vh"
             className="background-rectangle"
-            style={{ position: "absolute", top: "15vh", left: "38vh", zIndex: 0 }}
+            style={{ position: "absolute", top: "15vh", left: "36vh", zIndex: 0 }}
           >
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">

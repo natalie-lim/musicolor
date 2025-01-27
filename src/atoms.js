@@ -5,4 +5,8 @@ const userIDState = atom({
     default: '',
   });
 
-export { userIDState };
+const genreState = atom({
+  key: 'genre',
+  default: 'pop'
+})
+export { userIDState, genreState };

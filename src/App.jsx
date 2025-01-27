@@ -9,7 +9,6 @@ import {
   useRecoilState,
 } from 'recoil';
 import { userIDState } from './atoms.js';
-import axios from "axios";
 
 function App() {
   const [userID, setUserID] = useRecoilState(userIDState);
@@ -47,7 +46,7 @@ function App() {
       if (userID.trim()) {
         navigate("/pickplaylist");
       } else {
-        alert("Please enter your userID (not username).");
+        alert("oops.");
       }
     }
   };
@@ -83,12 +82,12 @@ function App() {
 
         <div className="content" style={{ position: "relative", zIndex: 1 }}>
           <h1 className="title">musicolor</h1>
-          <h2 className="description">generate a color palette based on <br></br> <br></br>your favorite spotify playlist</h2>
+          <h2 className="description">generate a color palette based on <br></br> <br></br>your favorite music genre</h2>
           <div className="input-container">
             <input
               className="input"
               type="text"
-              placeholder="enter spotify userID"
+              placeholder="enter your name"
               value={userID}
               onChange={handleInputChange}
               onKeyDown={handleEnterUserID}

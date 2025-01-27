@@ -1,0 +1,18 @@
+:root {
+    font-family: "IBM Plex Mono", serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: white;
+    background-color: rgb(191, 217, 251);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1{
+
+}

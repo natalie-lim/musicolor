@@ -25,3 +25,30 @@ rect {
   z-index: -1;
   outline: 2px color white;
 }
+
+.genre-button {
+  width: 15vw;
+  height: 10vh;
+  background: linear-gradient(90deg, green, blue);
+  color: white;
+  font-size: 1.2rem;
+  opacity: 30%;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer
+}
+
+.column-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6.5rem;
+}
+
+.button-container {
+  position: absolute;
+  top: 10vh;
+  right: 15vh;
+  display: flex;
+  gap: 4rem
+}

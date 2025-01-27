@@ -32,22 +32,22 @@ h1{
 
 .column-buttons button {
   background-color: white;
-  color: #6699ff; /* Light blue text */
+  color: #6699ff;
   font-size: 16px;
   font-weight: bold;
-  border: 2px solid #6699ff; /* Light blue border */
-  border-radius: 8px; /* Rounded corners */
-  padding: 10px 20px; /* Spacing inside the button */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: all 0.3s ease; /* Smooth transitions for hover effects */
-  margin: 10px; /* Add spacing between buttons */
+  border: 2px solid #6699ff; 
+  border-radius: 8px; 
+  padding: 10px 20px;
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  margin: 10px;
 }
 
 .column-buttons button:hover {
-  background-color: #6699ff; /* Light blue background on hover */
-  color: white; /* White text on hover */
+  background-color: #6699ff; 
+  color: white; 
 }
 
 .column-buttons button:active {
-  transform: scale(0.95); /* Slightly shrink button on click */
+  transform: scale(0.95); 
 }

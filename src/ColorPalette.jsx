@@ -10,6 +10,7 @@ function ColorPalette() {
     const genre = useRecoilValue(genreState); 
     const navigate = useNavigate();
     const [palette, setPalette] = useState([]); 
+    const [dots, setDots] = useState([]);
 
     const seedColorList = {
         classical: ['a7b0dd', 'C5AFA0', '94A187'], 
@@ -20,6 +21,13 @@ function ColorPalette() {
         rock: ['660000', '34252F', '023436'],
         hiphop: ['FFD700', 'FF5733', 'FFC300'],
         jazz: ['03012C', '634133', 'A4303F'],
+    };
+    
+    const getRandomColor = () => {
+      if (palette.length > 0) {
+        return palette[Math.floor(Math.random() * palette.length)];
+      }
+      return '#000000';
     };
     
 
@@ -36,23 +44,32 @@ function ColorPalette() {
 
     const getColorPalette = async () => {
         try {
-            const mode = getRandomScheme(); // Randomly select a mode
-            const count = 5; // Randomly select the number of colors
+            const mode = getRandomScheme();
+            const count = 5;
 
             const response = await axios.get(
               `https://www.thecolorapi.com/scheme?hex=${getSeedColor()}&mode=${mode}&count=${count}`
             );
 
             const colors = response.data.colors.map((color) => color.hex.value);
-            setPalette(colors); // Update palette state with fetched colors
+            setPalette(colors); 
         } catch (error) {
             console.error("Error fetching color palette:", error);
         }
     };
 
     useEffect(() => {
-        getColorPalette();
-    }, []); // Runs on first render and fetches a random palette
+      const generateDots = () =>
+        Array.from({ length: 50 }, (_, index) => ({
+          id: index,
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 3}s`,
+          color: getRandomColor(), 
+          diameter: `${Math.random() * 200}px`,
+        }));
+      setDots(generateDots());
+      }, [palette]);
 
     return (
         <>
@@ -106,6 +123,23 @@ function ColorPalette() {
                   home
                 </button>
             </div>
+        </div>
+        <div className="background">
+          {dots.map((dot) => (
+            <div
+              key={dot.id}
+              className="dot"
+              style={{
+                left: dot.left,
+                top: dot.top,
+                width: dot.diameter,
+                height: dot.diameter,
+                animationDelay: dot.animationDelay,
+                backgroundColor: dot.color,
+                boxShadow: `0 0 10px 3px ${dot.color}`,
+              }}
+            ></div>
+          ))}
         </div>
         </>
     );

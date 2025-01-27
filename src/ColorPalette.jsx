@@ -3,7 +3,6 @@ import { useRecoilValue } from 'recoil';
 import { genreState } from './atoms';
 import { Helmet } from "react-helmet";
 import "./ColorPalette.css"
-import "./PickGenre.css";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -65,9 +64,21 @@ function ColorPalette() {
               rel="stylesheet"
             />
         </Helmet>
+
+        <div className="rectangle">
+          <svg
+            width="60vw"
+            height="70vh"
+            className="background-rectangle"
+            style={{ position: "absolute", top: "15vh", left: "38vh" }}
+          >
+            <rect fill="white"/>
+          </svg>
+        </div>
+
         <div style={{ textAlign: 'center', padding: '2rem' }}>
             <h1>color palette for {genre}</h1>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
+            <div className= 'palette' style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
                 {palette.map((color, index) => (
                     <div
                         key={index}
@@ -77,7 +88,7 @@ function ColorPalette() {
                             backgroundColor: color,
                             borderRadius: '50%',
                             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                            border: '1px solid #ddd',
+                            border: '2px solid white',
                         }}
                         title={color}
                     ></div>
@@ -85,13 +96,11 @@ function ColorPalette() {
             </div>
             <div className='column-buttons' style={{ marginTop: '2rem' }}>
                 <button
-                  className="genre-button"
                   onClick={getColorPalette}
                 >
                   regenerate
                 </button>
                 <button
-                  className="genre-button"
                   onClick={() => navigate("/")}
                 >
                   home

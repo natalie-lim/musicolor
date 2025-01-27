@@ -42,7 +42,7 @@ rect {
 .column-buttons {
   display: flex;
   flex-direction: column;
-  gap: 6.5rem;
+  gap: 4.5rem;
 }
 
 .button-container {
@@ -51,4 +51,8 @@ rect {
   right: 15vh;
   display: flex;
   gap: 4rem
+}
+
+h1 {
+  color:white
 }

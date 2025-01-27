@@ -7,9 +7,9 @@ import {
   atom,
   selector,
   useRecoilState,
-  useRecoilValue,
 } from 'recoil';
 import { userIDState } from './atoms.js';
+import axios from "axios";
 
 function App() {
   const [userID, setUserID] = useRecoilState(userIDState);
@@ -45,7 +45,7 @@ function App() {
   const handleEnterUserID = (event) => {
     if (event.key === "Enter") {
       if (userID.trim()) {
-        navigate("/palette");
+        navigate("/pickplaylist");
       } else {
         alert("Please enter your userID (not username).");
       }

@@ -1,17 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./PickPlaylist.css";
 import { Helmet } from "react-helmet";
 import {
-  RecoilRoot,
-  atom,
-  selector,
   useRecoilState,
 } from 'recoil';
 import { userIDState } from './atoms.js';
+import axios from "axios";
 
 
-function PalletePage() {
-  const { userID } = useRecoilState(userIDState);
+function PickPlaylist() {
+  const [userID] = useRecoilState(userIDState);
+
+    useEffect (() => {
+      axios.post(
+        'https://accounts.spotify.com/api/token',
+        new URLSearchParams({
+          'grant_type': 'client_credentials',
+          'client_id': '95b9977cf0a04a23b8809a88d03f7467',
+          'client_secret': '8bf5e27b2e664326af64e65737ac498f'
+        })
+      ).then((r1) => {
+        let access_token = r1.data.access_token;
+        const response =  axios.get('https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb', {
+          headers: {
+            'Authorization': 'Bearer  ' + access_token
+          }
+          }).then((response) => {
+            console.log(response);
+          });
+        })
+      });
+
+    /**curl "https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb" \
+     -H "Authorization: Bearer  BQDZrrGarHgRbECnyJR9Ybnr9A3bKCcUHacG-eKXVLMpsef481sWHf03cDaSm65zhi4r_aXSw4GObV-qG6TAiEv0U_wlUJO2bYEZg8yOrLOp-w_k7cQ
+
+    /**
+     * import axios from 'axios';
+
+const response = await axios.get('https://api.spotify.com/v1/me/top/artists', {
+  headers: {
+    'Authorization': 'Bearer 1POdFZRZbvb...qqillRxMr2z'
+  }
+});
+     */
+  
+      /**
+       * curl -X POST "https://accounts.spotify.com/api/token" \
+       -H "Content-Type: application/x-www-form-urlencoded" \
+       -d "grant_type=client_credentials&client_id=your-client-id&client_secret=your-client-secret"
+  
+       */
+
   return (
     <>
       <Helmet>
@@ -38,16 +77,11 @@ function PalletePage() {
               </defs>
               <rect fill="url(#gradient)" blur= "radius"/>
             </svg>
-            <h1 className='title-2'>pick which <br></br>playlist</h1>
-          </div>
-          <div>
-            <h2>
-              userID: {userID}
-            </h2>
+            <h1 className='title-2'>pick which<br></br>playlist</h1>
           </div>
       </div>
     </>
   );
 }
 
-export default PalletePage;
+export default PickPlaylist;

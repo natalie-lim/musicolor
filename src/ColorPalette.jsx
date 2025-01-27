@@ -13,6 +13,7 @@ function ColorPalette() {
     const [palette, setPalette] = useState([]); 
     const [dots, setDots] = useState([]);
 
+    //I hand-picked three seed numbers for each genre
     const seedColorList = {
         classical: ['a7b0dd', 'C5AFA0', '94A187'], 
         country: ['8B4513', 'A0522D', 'B22222'],
@@ -24,6 +25,7 @@ function ColorPalette() {
         jazz: ['03012C', '634133', 'A4303F'],
     };
     
+    //this gets a random color from the palette that's been generated. I used this to make the dots
     const getRandomColor = () => {
         if (palette.length > 0) {
             return palette[Math.floor(Math.random() * palette.length)];
@@ -31,12 +33,13 @@ function ColorPalette() {
         return '#000000';
     };
     
-
+    //this gets a random seedcolor from the ones listed above
     const getSeedColor = () => {
         const seedArr = seedColorList[genre];
         return seedArr[Math.floor(Math.random() * seedArr.length)];
     };
 
+    //this is specific to the api i used 
     const getRandomScheme = () => {
         const modes = ['monochrome', 'analogic', 'complement', 'triad', 'quad'];
         return modes[Math.floor(Math.random() * modes.length)];

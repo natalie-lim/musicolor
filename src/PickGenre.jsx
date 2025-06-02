@@ -23,20 +23,6 @@ function PickPlaylist() {
       </Helmet>
       <div className="profile-page">
         <div className="rectangle">
-          <svg
-            width="35vw"
-            height="80vh"
-            className="background-rectangle"
-            style={{ position: "absolute", top: "10vh", left: "25vh", zIndex: 0 }}
-          >
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="red" />
-                <stop offset="100%" stopColor="blue" />
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#gradient)" />
-          </svg>
           <h1 className='title-2'>Hi <br></br>{userID},<br></br>pick which<br></br>genre</h1>
         </div>
 

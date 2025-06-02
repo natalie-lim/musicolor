@@ -61,22 +61,6 @@ function App() {
         />
       </Helmet>
       <div className="app">
-      <div className="rectangle">
-          <svg
-            width="60vw"
-            height="70vh"
-            className="background-rectangle"
-            style={{ position: "absolute", top: "15vh", left: "36vh", zIndex: 0 }}
-          >
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="red" />
-                <stop offset="100%" stopColor="blue" />
-              </linearGradient>
-            </defs>
-            <rect fill="url(#gradient)" blur= "radius"/>
-          </svg>
-        </div>
 
         <div className="content" style={{ position: "relative", zIndex: 1 }}>
           <h1 className="title">musicolor</h1>

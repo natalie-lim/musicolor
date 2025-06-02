@@ -90,16 +90,6 @@ function ColorPalette() {
             />
         </Helmet>
 
-        <div className="rectangle">
-          <svg
-            width="60vw"
-            height="70vh"
-            className="background-rectangle"
-            style={{ position: "absolute", top: "15vh", left: "38vh" }}
-          >
-            <rect fill="white"/>
-          </svg>
-        </div>
 
         <div style={{ textAlign: 'center', padding: '2rem' }}>
             <h1>color palette for {genre} music</h1>
